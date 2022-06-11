@@ -2,8 +2,7 @@
 
 namespace App\Contracts;
 
-interface RegisterContract {
-
+interface RegisterContract 
+{
     public function registerUser(array $data);
-
 }

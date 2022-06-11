@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Utilities;
+namespace App\Services;
 
 use GuzzleHttp\Client as GuzzleClient;
 
@@ -20,6 +20,9 @@ class PaymentService
             if (!isset($data['user_id'], $data['iban'], $data['account'])) {
                 return "";
             }
+
+            //test only
+            return "Test payment data id. You need to update.";
     
             $body = [
                 "customerId" => $data['user_id'],

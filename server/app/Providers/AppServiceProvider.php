@@ -3,8 +3,6 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Contracts\RegisterContract;
-use App\Utilities\RegisterService;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,6 +23,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->app->bind(RegisterContract::class, RegisterService::class);
+        //
     }
 }
