@@ -10,7 +10,8 @@ import Axios from '../api/Axios';
 import { 
     REGISTER_INFO, REGISTER_ADDRESS, 
     REGISTER_CREDENTIALS, REGISTER_SUBMIT,
-    REGISTER_INFO_FIELDS, REGISTER_ADDRESS_FIELDS, REGISTER_CREDENTIALS_FIELDS
+    REGISTER_INFO_FIELDS, REGISTER_ADDRESS_FIELDS, 
+    REGISTER_CREDENTIALS_FIELDS, LOCALSTORAGE_REGISTER
 } from '../config/constants';
 
 const Register = () => {
@@ -27,14 +28,12 @@ const Register = () => {
 
     const handleButton = (currentStep, nextStep, stateData) => {
         let error = "";
-        // console.log(stateData);
         if (nextStep === REGISTER_ADDRESS) {
             error  = formValidation(stateData, REGISTER_INFO_FIELDS);
         } else if (nextStep === REGISTER_CREDENTIALS) {
             error  = formValidation(stateData, REGISTER_ADDRESS_FIELDS);
         } else if (nextStep === REGISTER_SUBMIT) {
             error  = formValidation(stateData, REGISTER_CREDENTIALS_FIELDS);
-            // console.log(nextStep);
             if (error === "") {
                 handleSubmit(stateData);
             }
@@ -47,11 +46,18 @@ const Register = () => {
         }
     };
 
-    const handleSubmit = (data) => {
-        let res = "Welcome to Wunder Mobility.";
-        //let res = Axios("post", "register", data);
-        setSuccess("Registration Successfull.");
-        setRegisterForm(<Success msg={res}/>);
+    const handleSubmit = async (data) => {
+        
+        let res = await Axios("POST", "register", data);
+        
+        if (typeof res !=='undefined' && res.status === 200) {
+            localStorage.clear(LOCALSTORAGE_REGISTER);
+            setSuccess("Registration Successfull.");
+            setRegisterForm(<Success msg={res.data.paymentDataId}/>);
+        } else { 
+            let err = typeof res?.response?.data?.message !== 'undefined' ? res.response.data.message : res.message;
+            setError("Woops! " + err);
+        }
     };
 
     const handlePrevBtn = (prevStep, currentStep) => {

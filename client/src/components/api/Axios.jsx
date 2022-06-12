@@ -12,7 +12,7 @@ const Axios = async (method, url, data = [], token = "") => {
             data: data
         });
     } catch (error) {
-        console.log(error);
+        // console.log(error);
         return typeof error !== 'undefined' ? error : null;
     }
 }

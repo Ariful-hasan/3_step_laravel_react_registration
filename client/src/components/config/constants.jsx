@@ -8,4 +8,4 @@ export const REGISTER_CREDENTIALS_FIELDS = ["account","iban"];
 
 export const LOCALSTORAGE_REGISTER = "localstorage_register";
 
-export const API_URL = "http://127.0.0.1:8000";
+export const API_URL = "http://localhost:8000/api/";
