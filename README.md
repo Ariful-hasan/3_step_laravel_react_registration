@@ -11,17 +11,17 @@ This application has two parts
 For the backend here I use, Laravel 9.*.
 Steps are rquired to start the server.
 
-### Create .env
+## Create .env
 ```bash 
     *  change .env.example to ".env".
 ```
 
-### Create DB 
+## Create DB 
 ```bash 
     *  create database name "laravel".
 ```
 
-### CMD to start server 
+## CMD to start server 
 ```bash 
       composer update
 
@@ -32,11 +32,11 @@ Steps are rquired to start the server.
 
 The app is running on 8000 port and url http://127.0.0.1:8000/
 
-## Client
+### Client
 
 For the frontend here I use, React 18.*.
 
-### CMD to start clien:
+## CMD to start clien:
 ```bash
     npm install
     npm start
