@@ -5,18 +5,31 @@ namespace App\Services;
 use App\Contracts\RegisterContract;
 use App\Services\PaymentService;
 use App\Contracts\RegisterRepositoryContract;
+use App\Contracts\PaymentContract;
 
 class RegisterService implements RegisterContract
 {
-
+    
+    /**
+     * __construct
+     *
+     * @return void
+     */
     public function __construct(
-        protected PaymentService $paymentservice,
+        protected PaymentContract $paymentservice,
         protected RegisterRepositoryContract $registerrepository
         )
     {
         
     }
-
+    
+    /**
+     * This is responsible for creating new user
+     * by request data
+     *
+     * @param  array $data
+     * @return \Illuminate\Http\Response
+     */
     public function registerUser(array $data)
     {
         try {

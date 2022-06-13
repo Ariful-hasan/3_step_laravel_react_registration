@@ -21,12 +21,22 @@ class User extends Model
         'last_name',
         'telephone',
     ];
-
+    
+    /**
+     * Get the address associated with the user
+     *
+     * @return void
+     */
     public function address()
     {
         return $this->hasOne(Address::class);
     }
-
+    
+    /**
+     * Get the paymentifo associated with the user.
+     *
+     * @return void
+     */
     public function paymentinfo()
     {
         return $this->hasOne(Paymentinfo::class);

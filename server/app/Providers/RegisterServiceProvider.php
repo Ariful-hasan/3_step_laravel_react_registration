@@ -7,6 +7,8 @@ use App\Contracts\RegisterContract;
 use App\Services\RegisterService;
 use App\Contracts\RegisterRepositoryContract;
 use App\Repositories\RegisterRepository;
+use App\Contracts\PaymentContract;
+use App\Services\PaymentService;
 
 class RegisterServiceProvider extends ServiceProvider
 {
@@ -28,6 +30,7 @@ class RegisterServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->app->bind(RegisterContract::class, RegisterService::class);
+        $this->app->bind(PaymentContract::class, PaymentService::class);
         $this->app->bind(RegisterRepositoryContract::class, RegisterRepository::class);
     }
 }

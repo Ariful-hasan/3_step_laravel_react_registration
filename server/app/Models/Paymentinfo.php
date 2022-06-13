@@ -9,13 +9,21 @@ use App\Models\User;
 class Paymentinfo extends Model
 {
     use HasFactory;
-
+    
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
     protected $fillable = [
         'account',
         'iban',
         'payment_data_id',
     ];
-
+    
+    /**
+     *  Get the user that owns the paymentinfo.
+     */
     public function user()
     {
         return $this->belongsTo(User::class);

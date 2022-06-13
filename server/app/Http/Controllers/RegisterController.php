@@ -43,7 +43,6 @@ class RegisterController extends Controller
     {
         $validated = $request->validated();
         return $this->registerService->registerUser($validated);
-        // return response()->json($validated);
     }
 
     /**

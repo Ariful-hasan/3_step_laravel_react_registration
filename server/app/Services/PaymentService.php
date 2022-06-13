@@ -3,17 +3,30 @@
 namespace App\Services;
 
 use GuzzleHttp\Client as GuzzleClient;
+use App\Contracts\PaymentContract;
 
-class PaymentService 
+class PaymentService implements PaymentContract
 {
 
     private string $apiUrl;
-
+    
+    /**
+     * __construct
+     *
+     * @return void
+     */
     public function __construct()
     {
         $this->apiUrl = config('constants.PAYMENTDATA_URL');
     }
-
+    
+    /**
+     * getPaymentDataId call the payment api
+     * and generate paymentDataId using [userid, iban, accountName].
+     * 
+     * @param array $data
+     * @return string
+     */
     public function getPaymentDataId(array $data): string
     {
         try {
